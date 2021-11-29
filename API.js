@@ -18,13 +18,13 @@ client.connect().then(function (mClient) {
   });
 });
 
-let obj = [];
+let obj;
 
 app.get("/", function (req, res) {
-  db.collection("urlshortner")
-    .find()
-    .forEach((element) => {
-      obj.push(element);
+  obj = [];
+  db.collection("Details")
+    .findOne({ name: "Absaar Ali" })
+    .then(function (element) {
+      res.send(element);
     });
-  res.send(obj);
 });
